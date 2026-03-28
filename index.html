@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Contract Generator</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body {
+    font-family: Arial;
+    background: #0e1117;
+    color: white;
+    text-align: center;
+}
+input {
+    padding: 12px;
+    margin: 6px;
+    width: 260px;
+    border-radius: 8px;
+}
+button {
+    padding: 12px 25px;
+    background: #2ea043;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>إنشاء عقد السيارة</h2>
+
+<input id="name" placeholder="الاسم الكامل"><br>
+<input id="cin" placeholder="رقم البطاقة الوطنية"><br>
+<input id="address" placeholder="العنوان"><br>
+<input id="car" placeholder="معلومات السيارة"><br>
+<input id="start" placeholder="تاريخ البداية"><br>
+<input id="end" placeholder="تاريخ النهاية"><br>
+
+<button onclick="generatePDF()">إنشاء PDF</button>
+
+<script>
+function drawSmartText(doc, text, x, y) {
+    const isArabic = /[\u0600-\u06FF]/.test(text);
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = 1000;
+    canvas.height = 120;
+
+    ctx.font = isArabic ? "34px Arial" : "26px Arial";
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+
+    ctx.fillText(text, canvas.width - 10, 60);
+
+    const imgData = canvas.toDataURL("image/png");
+    doc.addImage(imgData, "PNG", x, y, 80, 10);
+}
+
+function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const img = new Image();
+    img.src = "contract.jpg";
+
+    img.onload = function () {
+        doc.addImage(img, 'JPEG', 0, 0, 210, 297);
+
+        drawSmartText(doc, document.getElementById("name").value, 173, 55);
+        drawSmartText(doc, document.getElementById("cin").value, 148, 64);
+        drawSmartText(doc, document.getElementById("address").value, 183, 76);
+        drawSmartText(doc, document.getElementById("car").value, 172, 112);
+
+        drawSmartText(doc, document.getElementById("start").value, 63, 182);
+        drawSmartText(doc, document.getElementById("end").value, 202, 188);
+
+        doc.save("contract.pdf");
+    };
+}
+</script>
+
+</body>
+</html>
