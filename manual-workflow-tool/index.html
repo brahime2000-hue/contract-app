@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workflow Embed</title>
+  <meta
+    name="description"
+    content="A compact manual content workflow panel for loading rows from Google Sheets and saving SCRIPT/LISTING drafts into Google Docs."
+  />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <main class="workflow-embed">
+    <section class="panel workflow-panel">
+        <div class="toolbar">
+          <div class="toolbar-actions">
+            <button
+              class="secondary-button"
+              id="toggle-settings"
+              type="button"
+              aria-expanded="false"
+              aria-controls="settings-panel"
+            >
+              Show Settings Panel
+            </button>
+            <button
+              class="secondary-button workflow-load-button"
+              id="load-current-row"
+              type="button">Load Current Row</button>
+            <button class="restart-button" id="reload-current" type="button">Reload Current</button>
+          </div>
+
+          <div class="badge-row">
+            <span class="badge" id="google-status" data-tone="neutral">Google not connected</span>
+            <span class="badge" id="progress-badge" data-tone="accent">Waiting for first load</span>
+          </div>
+        </div>
+
+        <section class="settings-panel" id="settings-panel" hidden>
+          <div class="settings-head">
+            <div>
+              <strong>Settings Panel</strong>
+              <p>Google Sheets + Drive + Docs. Hidden by default for embed use.</p>
+            </div>
+          </div>
+
+          <div class="settings-grid">
+            <label class="field">
+              <span>Google Sheet ID</span>
+              <input
+                id="sheet-id"
+                type="text"
+                autocomplete="off"
+                placeholder="1AbCdEfGhIjKlMnOpQrStUvWxYz"
+              />
+            </label>
+
+            <label class="field">
+              <span>Sheet GID</span>
+              <input id="sheet-gid" type="text" inputmode="numeric" placeholder="0" />
+            </label>
+
+            <label class="field">
+              <span>Start Row</span>
+              <input id="start-row" type="number" min="1" step="1" placeholder="3" />
+            </label>
+
+            <label class="field">
+              <span>Google Drive Folder ID</span>
+              <input
+                id="drive-folder-id"
+                type="text"
+                autocomplete="off"
+                placeholder="0AExampleFolderId123456789"
+              />
+            </label>
+
+            <label class="field field-wide">
+              <span>Google OAuth Client ID</span>
+              <input
+                id="google-client-id"
+                type="text"
+                autocomplete="off"
+                placeholder="1234567890-abc123def456.apps.googleusercontent.com"
+              />
+            </label>
+          </div>
+        </section>
+
+        <div class="summary-grid">
+          <article class="summary-card summary-card-wide summary-card-title">
+            <div class="summary-card-head">
+              <div class="summary-card-copy">
+                <span class="summary-label">Title</span>
+                <strong id="current-title">Waiting for row data</strong>
+                <small>Doc name = Column A + Column C + Column D</small>
+              </div>
+              <a id="last-doc-link" class="doc-link doc-link-inline" href="#" target="_blank" rel="noreferrer" hidden>
+                Open last created Google Doc
+              </a>
+            </div>
+          </article>
+
+          <article class="summary-card summary-card-youtube">
+            <div class="summary-inline">
+              <a id="youtube-link" class="summary-link is-disabled" href="#" target="_blank" rel="noreferrer">
+                YouTube
+              </a>
+              <button class="ghost-button" id="copy-link" type="button">Copy Link</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="tabs-shell">
+          <div class="tabs" role="tablist" aria-label="Workflow editors">
+            <button
+              class="tab is-active"
+              id="tab-script"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-script"
+              data-tab-target="script"
+            >
+              SCRIPT
+            </button>
+            <button
+              class="tab"
+              id="tab-listing"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-listing"
+              data-tab-target="listing"
+            >
+              LISTING
+            </button>
+          </div>
+
+            <section
+              class="tab-panel is-active"
+              id="panel-script"
+              role="tabpanel"
+              aria-labelledby="tab-script"
+              data-tab-panel="script"
+            >
+              <textarea
+                id="script-content"
+                class="workspace-textarea"
+                placeholder="Paste or write script here..."
+              ></textarea>
+              <div class="workspace-meta" aria-hidden="true">
+                <span class="char-count" id="script-char-count">0 chars</span>
+              </div>
+            </section>
+
+            <section
+              class="tab-panel"
+              id="panel-listing"
+            role="tabpanel"
+            aria-labelledby="tab-listing"
+            data-tab-panel="listing"
+            hidden
+            >
+              <textarea
+                id="listing-content"
+                class="workspace-textarea"
+                placeholder="Paste or write listing here..."
+              ></textarea>
+              <div class="workspace-meta workspace-meta-ghost" aria-hidden="true">
+                <span class="char-count char-count-ghost">0 chars</span>
+              </div>
+            </section>
+          </div>
+
+        <div class="action-row">
+          <div class="button-cluster">
+            <button class="primary-button" id="submit-item" type="button">Submit</button>
+            <button class="secondary-button" id="skip-item" type="button">Skip</button>
+          </div>
+
+          <div class="status-banner" id="app-status" data-tone="neutral">
+            Load a row to begin the workflow.
+          </div>
+        </div>
+    </section>
+  </main>
+
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

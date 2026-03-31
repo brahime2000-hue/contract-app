@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamili Studio</title>
+  <meta
+    name="description"
+    content="One unified workspace for Prompt Builder and JSON to SRT."
+  />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body data-theme="dark">
+  <div class="page-noise" aria-hidden="true"></div>
+  <div class="page-glow page-glow-one" aria-hidden="true"></div>
+  <div class="page-glow page-glow-two" aria-hidden="true"></div>
+
+  <main class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#tool-1" aria-label="Kamili Studio home">
+        <img class="brand-logo" src="assets/logo.png" alt="Kamili logo" />
+        <span class="brand-copy">
+          <strong class="brand-title">
+            <span class="brand-name-accent">Kamili</span>
+            <span class="brand-name-tail">Studio</span>
+          </strong>
+          <small>Prompt Builder / JSON to SRT</small>
+        </span>
+      </a>
+
+      <div class="topbar-actions">
+        <a class="topbar-link" href="#tool-workflow">Prompt Builder</a>
+        <a class="topbar-link" href="#tool-2">JSON to SRT</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+          <span class="sr-only" id="theme-toggle-label">Switch theme</span>
+          <svg
+            class="theme-toggle-icon"
+            width="20"
+            height="20"
+            viewBox="0 0 25 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <g class="theme-toggle-sun">
+              <path
+                d="M12.4058 17.7625C15.1672 17.7625 17.4058 15.5239 17.4058 12.7625C17.4058 10.0011 15.1672 7.76251 12.4058 7.76251C9.64434 7.76251 7.40576 10.0011 7.40576 12.7625C7.40576 15.5239 9.64434 17.7625 12.4058 17.7625Z"
+              />
+              <path d="M12.4058 1.76251V3.76251" />
+              <path d="M12.4058 21.7625V23.7625" />
+              <path d="M4.62598 4.98248L6.04598 6.40248" />
+              <path d="M18.7656 19.1225L20.1856 20.5425" />
+              <path d="M1.40576 12.7625H3.40576" />
+              <path d="M21.4058 12.7625H23.4058" />
+              <path d="M4.62598 20.5425L6.04598 19.1225" />
+              <path d="M18.7656 6.40248L20.1856 4.98248" />
+            </g>
+            <path
+              class="theme-toggle-moon"
+              d="M21.1918 13.2013C21.0345 14.9035 20.3957 16.5257 19.35 17.8781C18.3044 19.2305 16.8953 20.2571 15.2875 20.8379C13.6797 21.4186 11.9398 21.5294 10.2713 21.1574C8.60281 20.7854 7.07479 19.9459 5.86602 18.7371C4.65725 17.5283 3.81774 16.0003 3.4457 14.3318C3.07367 12.6633 3.18451 10.9234 3.76526 9.31561C4.346 7.70783 5.37263 6.29868 6.72501 5.25307C8.07739 4.20746 9.69959 3.56862 11.4018 3.41132C10.4052 4.75958 9.92564 6.42077 10.0503 8.09273C10.175 9.76469 10.8957 11.3364 12.0812 12.5219C13.2667 13.7075 14.8384 14.4281 16.5104 14.5528C18.1823 14.6775 19.8435 14.1979 21.1918 13.2013Z"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero-panel">
+      <div class="hero-copy">
+        <div class="hero-badge">Kamili creative workflow</div>
+        <h1>Build prompts. Convert JSON. One clean flow.</h1>
+        <p class="hero-text">
+          A tighter workspace for reference scripts, prompt generation, subtitle export, and quick
+          editing without jumping between separate tools.
+        </p>
+      </div>
+
+      <div class="hero-stack">
+        <div class="hero-card hero-card-accent">
+          <div class="hero-card-line">
+            <span class="hero-chip">Prompt Builder</span>
+            <strong>Reference to prompt pipeline</strong>
+          </div>
+          <p>Paste a script, pull the YouTube title, and edit each generated prompt in place.</p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-line">
+            <span class="hero-chip hero-chip-secondary">JSON to SRT</span>
+            <strong>Fast subtitle export</strong>
+          </div>
+          <p>Generate subtitles instantly, review the result, and tweak prompt text before copying.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="tool-stack">
+      <section class="tool-section" id="tool-1">
+        <div class="section-heading">
+          <div>
+            <h2>Prompt Builder</h2>
+          </div>
+        </div>
+
+        <div class="tool-card tool-card-merged">
+          <div class="workflow-inline-shell" id="tool-workflow">
+          <div class="workflow-inline-head">
+            <div>
+              <span class="label">Sheets to Docs Flow</span>
+            </div>
+          </div>
+
+            <div class="workflow-embed-card workflow-embed-card-inline">
+              <iframe
+                id="workflow-embed-frame"
+                class="workflow-embed-frame"
+                src="manual-workflow-tool/index.html"
+                title="Workflow"
+                loading="lazy"
+                allow="clipboard-write"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="output-shell prompt-builder-shell">
+            <div class="tabs-head">
+              <div class="tabs-head-copy">
+                <span class="tabs-hint">Press Enter to build. Use Shift + Enter for a new line.</span>
+              </div>
+
+              <div class="prompt-banner-params prompt-banner-params-inline" aria-label="Prompt parameters">
+                <label class="prompt-param prompt-param-words" for="pb-words" aria-label="Words">
+                  <input id="pb-words" class="prompt-param-input" type="number" value="3000" min="1" inputmode="numeric" />
+                </label>
+
+                <div class="prompt-param prompt-param-language" aria-label="Language">
+                  <div class="language-select language-select-compact" id="pb-language-select">
+                    <input id="pb-language" type="hidden" value="English" />
+                    <button
+                      class="language-trigger language-trigger-compact"
+                      id="pb-language-trigger"
+                      type="button"
+                      aria-haspopup="listbox"
+                      aria-expanded="false"
+                    >
+                      <span id="pb-language-value">English</span>
+                      <span class="language-caret" aria-hidden="true"></span>
+                    </button>
+                    <div class="language-dropdown" id="pb-language-dropdown" hidden>
+                      <div class="language-options" id="pb-language-list" role="listbox" aria-label="Language options">
+                        <button class="language-option is-active" data-language="English" type="button">English</button>
+                        <button class="language-option" data-language="Arabic" type="button">Arabic</button>
+                        <button class="language-option" data-language="French" type="button">French</button>
+                        <button class="language-option" data-language="German" type="button">German</button>
+                        <button class="language-option" data-language="Russian" type="button">Russian</button>
+                        <button class="language-option" data-language="Italian" type="button">Italian</button>
+                      </div>
+                      <div class="language-custom">
+                        <input
+                          id="pb-language-custom"
+                          type="text"
+                          placeholder="Add another language"
+                          aria-label="Add another language"
+                        />
+                        <button class="secondary-button secondary-button-compact" id="pb-language-add" type="button">
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="segmented-shell">
+              <div class="segmented-control" id="pb-tabs">
+                <button class="segmented-tab active" data-view="reference" type="button">Reference Script</button>
+                <button class="segmented-tab" data-view="prompt-0" data-index="0" type="button">Prompt 1</button>
+                <button class="segmented-tab" data-view="prompt-1" data-index="1" type="button">Prompt 2</button>
+                <button class="segmented-tab" data-view="prompt-2" data-index="2" type="button">Prompt 3</button>
+                <button class="segmented-tab" data-view="prompt-3" data-index="3" type="button">Prompt 4</button>
+                <button class="segmented-tab" data-view="prompt-4" data-index="4" type="button">Prompt 5</button>
+              </div>
+            </div>
+            <div class="prompt-tab-panel is-active" id="pb-reference-panel">
+              <textarea
+                id="pb-reference"
+                class="output-textarea prompt-builder-reference"
+                placeholder="Paste reference script here...&#10;(First line can hold a YouTube link; title is auto-fetched)"
+              ></textarea>
+            </div>
+            <div class="prompt-tab-panel" id="pb-prompts-panel" hidden>
+              <div
+                id="pb-output"
+                class="output-editor"
+                contenteditable="true"
+                spellcheck="false"
+                role="textbox"
+                aria-multiline="true"
+                data-placeholder="Press Enter in Reference Script to generate prompts."
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider" aria-hidden="true">
+        <span></span>
+      </div>
+
+      <section class="tool-section" id="tool-2">
+        <div class="section-heading">
+          <div>
+            <h2>JSON to Prompts and SRT</h2>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="field-block">
+            <label class="label" for="json-input">Paste JSON</label>
+            <textarea id="json-input"></textarea>
+          </div>
+
+          <div class="button-row button-row-split">
+            <div class="button-row tool-actions">
+              <button class="glow-button" id="srt-generate" type="button">
+                <span class="glow-button__content">
+                  <span>Generate</span>
+                </span>
+              </button>
+              <button class="secondary-button" id="srt-clear" type="button">Clear All</button>
+            </div>
+            <div class="status status-inline" id="srt-status">Paste JSON and generate.</div>
+          </div>
+
+          <div class="results-grid">
+            <div class="result-panel">
+              <div class="panel-head">
+                <span class="label">SRT Output</span>
+                <button class="secondary-button" id="srt-download" type="button">Download SRT</button>
+              </div>
+              <textarea id="srt-output" readonly placeholder="SRT will appear here..."></textarea>
+            </div>
+
+            <div class="result-panel">
+              <div class="panel-head">
+                <span class="label">Prompt Output</span>
+                <div class="panel-actions">
+                  <span class="preset-badge" id="prompt-preset-badge">Default preset</span>
+                  <button
+                    class="icon-button"
+                    id="prompt-preset-settings"
+                    type="button"
+                    aria-label="Manage image prompt presets"
+                    title="Manage image prompt presets"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M19.14 12.94a7.96 7.96 0 0 0 .05-.94 7.96 7.96 0 0 0-.05-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.28 7.28 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.9 2h-3.8a.5.5 0 0 0-.49.42l-.36 2.54c-.58.22-1.12.53-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.48a.5.5 0 0 0 .12.64l2.03 1.58a7.96 7.96 0 0 0-.05.94c0 .32.02.63.05.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32a.5.5 0 0 0 .6.22l2.39-.96c.5.4 1.05.72 1.63.94l.36 2.54a.5.5 0 0 0 .49.42h3.8a.5.5 0 0 0 .49-.42l.36-2.54c.58-.22 1.13-.54 1.63-.94l2.39.96a.5.5 0 0 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7Z"/>
+                    </svg>
+                  </button>
+                  <button class="secondary-button" id="prompts-copy" type="button">Copy Prompts</button>
+                </div>
+              </div>
+              <textarea id="prompts-output" placeholder="Prompt results will appear here after generation."></textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="preset-modal" id="prompt-preset-modal" hidden>
+      <div class="preset-dialog" role="dialog" aria-modal="true" aria-labelledby="prompt-preset-title">
+        <div class="preset-dialog-head">
+          <div>
+            <h3 id="prompt-preset-title">Image Prompt Presets</h3>
+            <p>Save your prompt add-ons here, then switch between them anytime.</p>
+          </div>
+          <button class="icon-button" id="prompt-preset-close" type="button" aria-label="Close presets">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.7 5.3 12 10.6l5.3-5.3 1.4 1.4-5.3 5.3 5.3 5.3-1.4 1.4-5.3-5.3-5.3 5.3-1.4-1.4 5.3-5.3-5.3-5.3 1.4-1.4Z"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="preset-list" id="prompt-preset-list"></div>
+
+        <div class="preset-form">
+          <div class="field-block">
+            <label class="label" for="prompt-preset-name">Preset Name</label>
+            <input id="prompt-preset-name" type="text" placeholder="Ancient history preset" />
+          </div>
+            <div class="field-block">
+              <label class="label sr-only" for="prompt-preset-text">Prompt Text</label>
+              <textarea
+                id="prompt-preset-text"
+                placeholder="Prompt Text..."
+              ></textarea>
+            </div>
+          <div class="button-row">
+            <button class="glow-button" id="prompt-preset-save" type="button">
+              <span class="glow-button__content">
+                <span>Save Preset</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="confirm-modal" id="preset-delete-confirm" hidden>
+      <div class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="preset-delete-title">
+        <div class="confirm-copy">
+          <span class="label">Delete Preset</span>
+          <h3 id="preset-delete-title">Are you sure?</h3>
+          <p id="preset-delete-text">This preset will be removed from your saved list.</p>
+        </div>
+        <div class="confirm-actions">
+          <button class="secondary-button" id="preset-delete-cancel" type="button">Cancel</button>
+          <button class="glow-button is-danger" id="preset-delete-confirm-btn" type="button">
+            <span class="glow-button__content">
+              <span>Delete Preset</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      Built for prompt building, workflow tracking, and subtitle export.
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      const workflowFrame = document.getElementById("workflow-embed-frame");
+      if (!workflowFrame) {
+        return;
+      }
+
+      const minHeight = 520;
+
+      const applyHeight = (height) => {
+        const nextHeight = Math.max(minHeight, Math.ceil(Number(height) || 0));
+        workflowFrame.style.height = `${nextHeight}px`;
+      };
+
+      window.addEventListener("message", (event) => {
+        if (event.source !== workflowFrame.contentWindow) {
+          return;
+        }
+
+        if (event.data?.type !== "workflow-embed-height") {
+          return;
+        }
+
+        applyHeight(event.data.height);
+      });
+
+      workflowFrame.addEventListener("load", () => {
+        window.setTimeout(() => {
+          try {
+            const doc = workflowFrame.contentDocument;
+            if (!doc) {
+              return;
+            }
+
+            applyHeight(
+              Math.max(
+                doc.documentElement?.scrollHeight || 0,
+                doc.body?.scrollHeight || 0
+              )
+            );
+          } catch (error) {
+            console.warn("Could not auto-size workflow frame:", error);
+          }
+        }, 120);
+      });
+    })();
+  </script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
